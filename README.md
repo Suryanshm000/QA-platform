@@ -13,6 +13,10 @@
 ![q5](https://github.com/Suryanshm000/QA-platform/assets/65828169/45a5c02a-2bd3-4b81-89cc-a290c2423b0f)
 
 
+## Screen Recording
+
+https://github.com/Suryanshm000/QA-platform/assets/65828169/09caa2bb-00f4-4e42-9b76-6071c866f79a
+
 <br>
 
 ### User credentials
@@ -36,6 +40,7 @@ git clone https://github.com/Suryanshm000/QA-platform.git`
 cd QA-platform
 ```
 
+Virtual Environment setup
 ```
 pip install virtualenv
 python -m venv <name of environment>
