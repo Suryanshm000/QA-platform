@@ -1,0 +1,44 @@
+{% extends 'firstapp/base.html' %}
+
+{% block content %}
+
+  <div class="quescontent">
+
+    <h3 class='posttitle loader'>{{ question.title }}</h3>
+  
+    <p class='postcontent' >{{ question.text|safe|linebreaksbr }}</p>
+    
+    <i>Posted by: {{ question.author }}</i>
+  
+    <hr>
+    <a class="btn btn-primary btn-comment" href="{% url 'add_comment' question.pk%}">Add answer</a>
+    <div class="container">
+  
+  
+    <br>
+    {% for comment in question.comments.all %}
+  
+    
+      <div class="ans">{{ comment.text|linebreaks }}</div>
+      <i>{{ comment.created_date }}</i>
+      <br>
+      <i>Posted by: {{ comment.author }}</i>
+
+      <p>Likes: {{ comment.likes.count }}</p>
+
+      {% if user in comment.likes.all %}
+        <a href="{% url 'like_comment' comment.id %}">Unlike</a>
+      {% else %}
+        <a href="{% url 'like_comment' comment.id %}">Like</a>
+      {% endif %}
+        
+      <hr>
+
+    {% empty %}
+      <p>No answer posted.</p>
+    {% endfor %}
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'firstapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="blog">
+
+  {% if not user.is_authenticated %}
+  <h3>Please login to post a question</h3>
+  {% endif %}
+
+  {% for question in question_list %}
+  <div class="question">
+
+    <h2><a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a></h2>
+    <div class="date">
+      <i>Created on: {{ question.created_date|date:"d M y"}}</i>
+    </div>
+    <a href="{% url 'question_detail' question.pk %}">Answers: {{ question.comments.all | length }}</a>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
